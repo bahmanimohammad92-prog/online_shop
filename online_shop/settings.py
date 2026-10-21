@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'orders',
     'products',
     'users',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'online_shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'online_shop',
+        'NAME': 'online_shop_new',
         'USER': 'postgres',
         'PASSWORD': 'bahmaei.6510',
         'HOST': 'localhost',
@@ -141,3 +142,5 @@ CACHES = {
         "LOCATION": "redis://127.0.0.1:6379",
     }
 }
+
+AUTH_USER_MODEL = "users.user"
