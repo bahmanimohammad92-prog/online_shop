@@ -31,12 +31,13 @@ class Product(models.Model):
         verbose_name="نام محصول"
         )
     
-    price = models.BigIntegerField(
+    price = models.PositiveBigIntegerField(
         verbose_name="قیمت محصول"
         )
     
-    stock = models.IntegerField(
-        verbose_name="تعداد موجود در انبار"
+    stock = models.PositiveIntegerField(
+        verbose_name="تعداد موجود در انبار",
+        default=0
         )
     
     discount_price = models.PositiveBigIntegerField(
@@ -68,13 +69,13 @@ class Product(models.Model):
     class Meta:
         verbose_name_plural = "محصولات"
 
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
 
 
 class ProductImage(models.Model):
     image = models.ImageField(
-        upload_to="", 
+        upload_to="products/", 
         verbose_name="تصویر محصول"
         ) 
        
@@ -91,7 +92,7 @@ class ProductImage(models.Model):
         )
     
     sort_order = models.PositiveSmallIntegerField(
-        verbose_name="ترتیب نمایش تصاویر"
+        verbose_name="ترتیب نمایش تصاویر",
         default=0
         )
 
@@ -99,10 +100,10 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = "عکس محصولات"
         verbose_name_plural = "عکس های محصول"
-        ordering = ["sort_order"]
+        ordering = ["-sort_order"]
 
-        def __str__(self):
-            return f"{self.product.name} - تصویر {self.pk}"
+    def __str__(self):
+        return f"{self.product.name} - تصویر {self.pk}"
             
     
 
