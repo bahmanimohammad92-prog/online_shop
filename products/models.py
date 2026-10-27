@@ -8,7 +8,7 @@ class Category(models.Model):
     
     slug = models.SlugField(
         unique=True, 
-        verbose_name="شناسه محصول"
+        verbose_name="شناسه دسته بندی"
         )
 
     class Meta:
@@ -100,7 +100,7 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = "عکس محصولات"
         verbose_name_plural = "عکس های محصول"
-        ordering = ["-sort_order"]
+        ordering = ["sort_order", "id"]
 
     def __str__(self):
         return f"{self.product.name} - تصویر {self.pk}"
