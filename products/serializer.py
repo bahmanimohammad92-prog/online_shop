@@ -6,7 +6,9 @@ class CategorySerializers(serializers.ModelSerializer):
     class Meta:
         
         model = Category
-        fields = "__all__"
+        fields = [
+            "title", "slug"
+            ]
 
 
 class ProductSerializers(serializers.ModelSerializer):
@@ -14,7 +16,10 @@ class ProductSerializers(serializers.ModelSerializer):
      class Meta:
         
          model = Product
-         fields = "__all__"
+         fields = [
+            "category", "name", "price", "stock", "discount_price", 
+            "slug", "description", "is_active", "created_at"
+            ]
 
 
 class ProductImageSerializers(serializers.ModelSerializer):
@@ -22,6 +27,6 @@ class ProductImageSerializers(serializers.ModelSerializer):
     class Meta:
 
         model = ProductImage
-        fields = "__all__"
-
-        # بعدا فیلدها رو بهش بده ک چک کنهاز all استفاده نکن
+        fields = [
+            "image", "product", "is_primary", "sort_order"
+            ]
