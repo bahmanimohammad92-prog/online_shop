@@ -1,7 +1,7 @@
-# from django.urls import path
-# from.views import SignupAPIView, LoginAPIView
+from django.urls import path
+from.views import ProductAPIView, ProductListAPIView
 
-# urlpatterns = [
-# path("register/", SignupAPIView.as_view()),
-# path("login/", LoginAPIView.as_view()),
-# ]
+urlpatterns = [
+path("all/", ProductListAPIView.as_view()),
+path("<slug:slug>/", ProductAPIView.as_view()),
+]
